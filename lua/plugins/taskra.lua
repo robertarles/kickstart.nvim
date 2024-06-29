@@ -19,8 +19,8 @@ return {
       taskra.add_syntax_rule('- %[([^xX])%] ', 'Warning')
       taskra.add_syntax_rule('- %[([xX])%] ', 'Error')
 
-      taskra.add_syntax_rule('[BUG]', 'TaskraRed')
-      taskra.add_syntax_rule('[TODO]', 'TaskraYellow')
+      taskra.add_syntax_rule('\\[BUG\\]', 'TaskraRed')
+      taskra.add_syntax_rule('\\[TODO\\]', 'TaskraYellow')
       -- [TODO] -- Add text manipulation functions
       taskra.add_text_function('upper', function()
         local line = vim.api.nvim_get_current_line()
