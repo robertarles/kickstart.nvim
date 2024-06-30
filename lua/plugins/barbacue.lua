@@ -1,3 +1,5 @@
+-- https://github.com/utilyre/barbecue.nvim
+-- VS Code like winbar for Neovim
 return {
   {
     'utilyre/barbecue.nvim',
