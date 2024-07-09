@@ -1,6 +1,6 @@
 return {
   -- NOTE: Plugins can be added with a link (or for a github repo: 'owner/repo' link).
-  'tpope/vim-sleuth', -- Detect tabstop and shiftwidth automatically
+  -- 'tpope/vim-sleuth', -- Detect tabstop and shiftwidth automatically
 
   -- NOTE: Plugins can also be added by using a table,
   -- with the first argument being the link and the following
@@ -56,17 +56,17 @@ return {
       -- Document existing key chains
       require('which-key').register {
         -- ['<leader>c'] = { name = '[C]ode', _ = 'which_key_ignore' },
-        ['<leader>d'] = { name = '[D]ocument', _ = 'which_key_ignore' },
+        ['<leader>d'] = { name = '[d]ocument', _ = 'which_key_ignore' },
         ['<leader>l'] = { name = '[l]sp', _ = 'which_key_ignore' },
         -- ['<leader>r'] = { name = '[R]ename', _ = 'which_key_ignore' },
-        ['<leader>s'] = { name = '[S]earch', _ = 'which_key_ignore' },
+        ['<leader>s'] = { name = '[s]earch', _ = 'which_key_ignore' },
         -- ['<leader>w'] = { name = '[W]orkspace', _ = 'which_key_ignore' },
-        ['<leader>t'] = { name = '[T]oggle', _ = 'which_key_ignore' },
-        ['<leader>h'] = { name = 'Git [H]unk', _ = 'which_key_ignore' },
+        ['<leader>t'] = { name = '[t]oggle', _ = 'which_key_ignore' },
+        ['<leader>h'] = { name = 'Git [h]unk', _ = 'which_key_ignore' },
       }
       -- visual mode
       require('which-key').register({
-        ['<leader>h'] = { 'Git [H]unk' },
+        ['<leader>h'] = { 'Git [h]unk' },
       }, { mode = 'v' })
     end,
   },
