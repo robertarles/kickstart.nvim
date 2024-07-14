@@ -24,6 +24,18 @@ vim.opt.number = true
 -- Enable mouse mode, can be useful for resizing splits for example!
 vim.opt.mouse = 'a'
 
+-- turn off word wrap by default
+vim.opt.wrap = false
+-- turn it on for markdown files, since they are usually written in plain text and it's easier to read with word wrap
+vim.api.nvim_create_autocmd('FileType', {
+  pattern = 'markdown',
+  callback = function()
+    vim.opt_local.wrap = true
+    vim.opt_local.linebreak = true
+    vim.opt_local.breakindent = true
+  end,
+})
+
 -- Don't show the mode, since it's already in the status line
 vim.opt.showmode = false
 
