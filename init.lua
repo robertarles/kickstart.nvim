@@ -119,6 +119,22 @@ vim.keymap.set('n', '<C-l>', '<C-w><C-l>', { desc = 'Move focus to the right win
 vim.keymap.set('n', '<C-j>', '<C-w><C-j>', { desc = 'Move focus to the lower window' })
 vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper window' })
 
+-- Map Ctrl+a to select all text in the buffer
+vim.api.nvim_set_keymap('n', '<C-a>', 'ggVG', { noremap = true, silent = true })
+-- Map Cmd+a to select all text in the buffer on Mac
+vim.api.nvim_set_keymap('n', '<D-a>', 'ggVG', { noremap = true, silent = true })
+
+-- Map Ctrl+b to run the external command ~/bin/notesmanautomation and refresh the buffer
+vim.api.nvim_set_keymap('n', '<leader>1', ':lua RunNotesManAutomation()<CR>', { noremap = true, silent = true })
+
+function RunNotesManAutomation()
+  -- Execute the external command
+  vim.cmd '!~/bin/notesmanautomation'
+  -- Refresh the buffer
+  vim.cmd 'edit'
+end
+
+-- Your other Neovim configurations...
 -- [[ Basic Autocommands ]]
 --  See `:help lua-guide-autocommands`
 
