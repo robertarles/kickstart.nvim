@@ -196,8 +196,25 @@ vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>")
 
 -- Diagnostic keymaps
 -- ra_mod customizations
-vim.keymap.set("n", "<leader>bc", ":bd<CR>", { noremap = true, silent = true, desc = "[b]uffer [c]lose" })
-
+vim.keymap.set("n", "<leader>bc", ":BufferClose<CR>", { noremap = true, silent = true, desc = "[b]uffer [c]lose" })
+vim.keymap.set(
+	"n",
+	"<leader>bo",
+	":BufferCloseAllButCurrent<CR>",
+	{ noremap = true, silent = true, desc = "[b] close [o]thers" }
+)
+vim.keymap.set(
+	"n",
+	"<leader>bl",
+	":BufferCloseBuffersLeft<CR>",
+	{ noremap = true, silent = true, desc = "[b] close buffers [l]eft" }
+)
+vim.keymap.set(
+	"n",
+	"<leader>br",
+	":BufferCloseBuffersRight<CR>",
+	{ noremap = true, silent = true, desc = "[b] close buffers [r]ight" }
+)
 -- Exit terminal mode in the builtin terminal with a shortcut that is a bit easier
 -- for people to discover. Otherwise, you normally need to press <C-\><C-n>, which
 -- is not what someone will guess without a bit more experience.
@@ -326,7 +343,6 @@ require("lazy").setup({
 			-- Document existing key chains
 			require("which-key").add({
 				{ "<leader>b", group = "[b]uffer" },
-				{ "<leader>c", group = "[C]ode" },
 				{ "<leader>d", group = "[D]ocument" },
 				{ "<leader>g", group = "[G]it", mode = { "n", "v" } },
 				{ "<leader>l", group = "[l]sp" },
