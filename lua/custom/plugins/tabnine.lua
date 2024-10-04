@@ -1,5 +1,5 @@
 local hostname = vim.loop.os_gethostname()
-
+-- moriarty CPU spins out of control with tabnine running
 if not string.find(hostname, "moriarty") then
 	return {
 		{
@@ -23,4 +23,3 @@ else
 	-- dont run this on my weak ass linux box
 	return {}
 end
-
