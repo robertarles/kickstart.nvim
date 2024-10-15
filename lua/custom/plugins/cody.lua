@@ -19,3 +19,5 @@ if string.find(hostname, "moriarty") then
 		},
 	}
 end
+
+return {}
