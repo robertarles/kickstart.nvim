@@ -256,10 +256,9 @@ end
 function TaskmasterraRecordKeep()
 	vim.cmd("write")
 	-- Execute the external command
-	-- vim.cmd("!~/bin/notesmanautomation")
 	vim.cmd("!~/go/bin/taskmasterra recordkeep -i ~/plaintext.robert/notes/disney/todo.disney.md")
 	vim.cmd("!~/go/bin/taskmasterra recordkeep -i ~/plaintext.robert/notes/personal/todo.personal.md")
-	-- Refresh the buffer
+	-- Refresh the buffer, simply calling edit does this
 	vim.cmd("edit")
 end
 
@@ -268,7 +267,7 @@ function TaskmasterraUpdateCal()
 	-- Execute the external command
 	vim.cmd("!~/go/bin/taskmasterra updatecal -i ~/plaintext.robert/notes/disney/todo.disney.md")
 	vim.cmd("!~/go/bin/taskmasterra updatecal -i ~/plaintext.robert/notes/personal/todo.personal.md")
-	-- Refresh the buffer
+	-- Refresh the buffer, simply calling edit does this
 	vim.cmd("edit")
 end
 
