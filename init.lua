@@ -194,6 +194,12 @@ vim.keymap.set("n", "<leader>le", vim.diagnostic.open_float, { desc = "[l]sp Sho
 vim.keymap.set("n", "<leader>lq", vim.diagnostic.setloclist, { desc = "[l]sp Open diagnostic [q]uickfix list" }) -- TODO: <leader>c new
 vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>")
 
+vim.keymap.set(
+	"n",
+	"<leader>T",
+	":botright split | terminal<CR>",
+	{ noremap = true, silent = true, desc = "[T]erminal" }
+)
 -- Diagnostic keymaps
 -- ra_mod customizations
 vim.keymap.set("n", "<leader>bc", ":BufferClose<CR>", { noremap = true, silent = true, desc = "[b]uffer [c]lose" })
