@@ -1,35 +1,39 @@
 -- Neo-tree is a Neovim plugin to browse the file system
 -- https://github.com/nvim-neo-tree/neo-tree.nvim
+
 return {
-  'nvim-neo-tree/neo-tree.nvim',
-  version = '*',
-  dependencies = {
-    'nvim-lua/plenary.nvim',
-    'nvim-tree/nvim-web-devicons', -- not strictly required, but recommended
-    'MunifTanjim/nui.nvim',
-  },
-  cmd = 'Neotree',
-  keys = {
-    {
-      '\\',
-      ':Neotree reveal<CR>',
-      { desc = 'NeoTree reveal' },
-    },
-  },
-  opts = {
-    -- close nvim when NeoTree is the last window
-    auto_close = true,
-    window = {
-      position = 'left',
-      width = 30,
-    },
-    filesystem = {
-      window = {
-        mappings = {
-          ['\\'] = 'close_window',
-          ['l'] = 'open',
-        },
-      },
-    },
-  },
+	"nvim-neo-tree/neo-tree.nvim",
+	version = "*",
+	dependencies = {
+		"nvim-lua/plenary.nvim",
+		"nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
+		"MunifTanjim/nui.nvim",
+	},
+	cmd = "Neotree",
+	keys = {
+		{ "\\", ":Neotree reveal<CR>", desc = "NeoTree reveal" },
+	},
+	opts = {
+		-- close nvim when NeoTree is the last window
+		follow_current_file = true,
+		use_libuv_file_watcher = true,
+		auto_close = true,
+		window = {
+			position = "left",
+			width = 30,
+		},
+		filesystem = {
+			window = {
+				position = "left",
+				mappings = {
+					["\\"] = "close_window",
+					["l"] = "open",
+				},
+			},
+		},
+		buffers = {
+			show_unloaded = true,
+			window = "right",
+		},
+	},
 }
