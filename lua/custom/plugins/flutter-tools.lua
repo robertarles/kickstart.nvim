@@ -15,24 +15,24 @@ return {
 				-- This determines whether notifications are show with `vim.notify` or with the plugin's custom UI
 				-- please note that this option is eventually going to be deprecated and users will need to
 				-- depend on plugins like `nvim-notify` instead.
-				notification_style = "plugin", -- "native" | "plugin",
+				notification_style = "native", -- "native" | "plugin",
 			},
 			decorations = {
 				statusline = {
 					-- set to true to be able use the 'flutter_tools_decorations.app_version' in your statusline
 					-- this will show the current version of the flutter app from the pubspec.yaml file
-					app_version = false,
+					app_version = true,
 					-- set to true to be able use the 'flutter_tools_decorations.device' in your statusline
 					-- this will show the currently running device if an application was started with a specific
 					-- device
-					device = false,
+					device = true,
 					-- set to true to be able use the 'flutter_tools_decorations.project_config' in your statusline
 					-- this will show the currently selected project configuration
 					project_config = false,
 				},
 			},
 			debugger = { -- integrate with nvim dap + install dart code debugger
-				enabled = false,
+				enabled = true,
 				-- if empty dap will not stop on any exceptions, otherwise it will stop on those specified
 				-- see |:help dap.set_exception_breakpoints()| for more info
 				exception_breakpoints = {},
@@ -49,10 +49,10 @@ return {
 					-- require("dap.ext.vscode").load_launchjs()
 				end,
 			},
-			root_patterns = { ".git", "pubspec.yaml" }, -- patterns to find the root of your flutter project
-			fvm = false, -- takes priority over path, uses <workspace>/.fvm/flutter_sdk if enabled
+			root_patterns = { ".git", "pubspec.yaml", "package.json" }, -- patterns to find the root of your flutter project
+			fvm = true, -- takes priority over path, uses <workspace>/.fvm/flutter_sdk if enabled
 			widget_guides = {
-				enabled = false,
+				enabled = true,
 			},
 			closing_tags = {
 				highlight = "ErrorMsg", -- highlight for the closing tag
@@ -67,12 +67,12 @@ return {
 				filter = nil, -- optional callback to filter the log
 				-- takes a log_line as string argument; returns a boolean or nil;
 				-- the log_line is only added to the output if the function returns true
-				notify_errors = false, -- if there is an error whilst running then notify the user
+				notify_errors = true, -- if there is an error whilst running then notify the user
 				open_cmd = "tabedit", -- command to use to open the log buffer
 			},
 			dev_tools = {
-				autostart = false, -- autostart devtools server if not detected
-				auto_open_browser = false, -- Automatically opens devtools in the browser
+				autostart = true, -- autostart devtools server if not detected
+				auto_open_browser = true, -- Automatically opens devtools in the browser
 			},
 			outline = {
 				open_cmd = "30vnew", -- command to use to open the outline buffer
@@ -80,8 +80,8 @@ return {
 			},
 			lsp = {
 				color = { -- show the derived colours for dart variables
-					enabled = false, -- whether or not to highlight color variables at all, only supported on flutter >= 2.10
-					background = false, -- highlight the background
+					enabled = true, -- whether or not to highlight color variables at all, only supported on flutter >= 2.10
+					background = true, -- highlight the background
 					background_color = nil, -- required, when background is transparent (i.e. background_color = { r = 19, g = 17, b = 24},)
 					foreground = false, -- highlight the foreground
 					virtual_text = true, -- show the highlight using virtual text
