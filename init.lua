@@ -194,6 +194,14 @@ vim.keymap.set("n", "<leader>le", vim.diagnostic.open_float, { desc = "[l]sp Sho
 vim.keymap.set("n", "<leader>lq", vim.diagnostic.setloclist, { desc = "[l]sp Open diagnostic [q]uickfix list" }) -- TODO: <leader>c new
 vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>")
 
+-- Exit terminal mode in the builtin terminal with a shortcut that is a bit easier
+-- for people to discover. Otherwise, you normally need to press <C-\><C-n>, which
+-- is not what someone will guess without a bit more experience.
+--
+-- NOTE: This won't work in all terminal emulators/tmux/etc. Try your own mapping
+-- or just use <C-\><C-n> to exit terminal mode
+vim.keymap.set("t", "<Esc><Esc>", "<C-\\><C-n>", { desc = "Exit terminal mode" })
+
 vim.keymap.set(
 	"n",
 	"<leader>T",
@@ -221,13 +229,6 @@ vim.keymap.set(
 	":BufferCloseBuffersRight<CR>",
 	{ noremap = true, silent = true, desc = "[b] close buffers [r]ight" }
 )
--- Exit terminal mode in the builtin terminal with a shortcut that is a bit easier
--- for people to discover. Otherwise, you normally need to press <C-\><C-n>, which
--- is not what someone will guess without a bit more experience.
---
--- NOTE: This won't work in all terminal emulators/tmux/etc. Try your own mapping
--- or just use <C-\><C-n> to exit terminal mode
-vim.keymap.set("t", "<Esc><Esc>", "<C-\\><C-n>", { desc = "Exit terminal mode" })
 
 -- TIP: Disable arrow keys in normal mode
 -- vim.keymap.set('n', '<left>', '<cmd>echo "Use h to move!!"<CR>')
@@ -277,6 +278,20 @@ function TaskmasterraUpdateCal()
 	vim.cmd("edit")
 end
 
+vim.api.nvim_set_keymap("n", "<leader>tw", ":set wrap!<CR>", { noremap = true, silent = true })
+
+vim.api.nvim_set_keymap("n", "<leader>?w", ":WhichKey<CR>", { noremap = true, silent = true })
+
+vim.api.nvim_set_keymap("n", "<leader>ltt", ":lua NeotestLayout()<CR>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("n", "<leader>ltr", ":Neotest run<CR>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("n", "<leader>lts", ":Neotest summary<CR>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("n", "<leader>lto", ":Neotest output<CR>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("n", "<leader>ltp", ":Neotest output-panel<CR>", { noremap = true, silent = true })
+function NeotestLayout()
+	vim.cmd(":Neotest output-panel")
+	vim.cmd(":Neotest summary")
+	vim.cmd(":wincmd p")
+end
 -- [[ Basic Autocommands ]]
 --  See `:help lua-guide-autocommands`
 

@@ -1,7 +1,14 @@
 return {
 	{
 		"nvim-neotest/neotest",
-		dependencies = { "sidlatau/neotest-dart" },
+		dependencies = {
+			"sidlatau/neotest-dart",
+			"nvim-lua/plenary.nvim",
+			"nvim-treesitter/nvim-treesitter",
+			"antoinemadec/FixCursorHold.nvim",
+			"nvim-telescope/telescope.nvim",
+			{ "fredrikaverpil/neotest-golang", version = "*" }, -- Installation
+		},
 		opts = function(_, opts)
 			-- Initialize opts.adapters if it is nil
 			opts.adapters = opts.adapters or {}
@@ -13,6 +20,53 @@ return {
 					custom_test_method_names = { "testWidgets" },
 				})
 			)
+			opts.log_level = vim.log.debug
+			opts.consumers = {}
+			opts.discovery = { enabled = true, concurrent = 0 }
+			opts.icons = {
+				passed = "✔",
+				failed = "✖",
+				running = "⟳",
+			}
+			opts.quickfix = {
+				enabled = true, -- Enable quickfix integration
+				open = false, -- Auto-open quickfix on failure
+			}
+			opts.output = {
+				enabled = true, -- Enable output
+				open_on_run = "short", -- Show test output in a floating window
+				highlights = {
+					passed = "NeotestPassed", -- Highlight for passed tests
+					failed = "NeotestFailed", -- Highlight for failed tests
+					running = "NeotestRunning", -- Highlight for running tests
+					skipped = "NeotestSkipped", -- Highlight for skipped tests
+					unknown = "NeotestUnknown", -- Highlight for unknown test state
+				},
+			}
+			opts.floating = {
+				border = "rounded", -- Border style for floating windows (rounded, single, double, etc.)
+				max_height = 0.8, -- Maximum height of floating windows
+				max_width = 0.8, -- Maximum width of floating windows
+			}
+			opts.strategies = {
+				integrated = {
+					height = 40, -- Height of the terminal window when running tests
+					width = 120, -- Width of the terminal window
+				},
+			}
+			opts.run = {
+				auto_attach = true, -- Automatically attach to running tests
+			}
+			opts.summary = {
+				enabled = true, -- Enable the summary window
+				follow = true, -- Automatically follow the cursor in the summary
+				expand_errors = true, -- Automatically expand errors in the summary
+				mappings = {
+					expand = { "o", "<CR>" }, -- Key mappings to expand test groups
+					run = "r", -- Key mappings to run tests
+					stop = "s", -- Key mappings to stop tests
+				},
+			}
 		end,
 	},
 	{
@@ -58,7 +112,7 @@ return {
 -- 						custom_test_method_names = {},
 -- 					}),
 -- 				},
--- 				log_level = vim.log.DEBUG,
+-- 				log_level = vim.log.debug,
 -- 				consumers = {},
 -- 				discovery = { enabled = true, concurrent = 0 },
 -- 				icons = {
