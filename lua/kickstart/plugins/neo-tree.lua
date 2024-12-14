@@ -24,6 +24,7 @@ return {
 			width = 30,
 		},
 		filesystem = {
+			follow_current_file = true,
 			window = {
 				position = "left",
 				mappings = {
