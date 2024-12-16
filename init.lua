@@ -193,6 +193,9 @@ vim.keymap.set("n", "<leader>q", vim.diagnostic.setloclist, { desc = "Open diagn
 vim.keymap.set("n", "<leader>le", vim.diagnostic.open_float, { desc = "[l]sp Show diagnostic [e]rror messages" }) -- TODO: <leader>c new
 vim.keymap.set("n", "<leader>lq", vim.diagnostic.setloclist, { desc = "[l]sp Open diagnostic [q]uickfix list" }) -- TODO: <leader>c new
 vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>")
+-- Key mapping for normal and visual modes
+vim.api.nvim_set_keymap("n", "<D-/>", "gcc", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("v", "<D-/>", "gc", { noremap = true, silent = true })
 
 -- Exit terminal mode in the builtin terminal with a shortcut that is a bit easier
 -- for people to discover. Otherwise, you normally need to press <C-\><C-n>, which
@@ -292,6 +295,8 @@ function NeotestLayout()
 	vim.cmd(":Neotest summary")
 	vim.cmd(":wincmd p")
 end
+vim.api.nvim_set_keymap("n", "<D-/>", ":<CR>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("v", "<D-/>", ":<CR>", { noremap = true, silent = true })
 -- [[ Basic Autocommands ]]
 --  See `:help lua-guide-autocommands`
 

@@ -16,7 +16,6 @@ return {
 	},
 	opts = {
 		-- close nvim when NeoTree is the last window
-		follow_current_file = true,
 		use_libuv_file_watcher = true,
 		auto_close = true,
 		window = {
@@ -24,7 +23,7 @@ return {
 			width = 30,
 		},
 		filesystem = {
-			follow_current_file = true,
+			follow_current_file = { enabled = true },
 			window = {
 				position = "left",
 				mappings = {
