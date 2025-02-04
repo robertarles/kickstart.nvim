@@ -173,6 +173,21 @@ vim.opt.cursorline = true
 -- Minimal number of screen lines to keep above and below the cursor.
 vim.opt.scrolloff = 10
 
+-- ra_mod 2025-01-19
+
+vim.api.nvim_set_hl(0, "NormalFloat", { bg = "#1e222a", blend = 10 })
+
+-- Customize LSP hover window
+vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
+	border = "rounded", -- "single", "double", "rounded", "shadow", etc.
+})
+
+-- Highlight groups for floating windows
+vim.api.nvim_set_hl(0, "NormalFloat", { bg = "#1e222a" })
+vim.api.nvim_set_hl(0, "FloatBorder", { bg = "#1e222a", fg = "#c678dd" })
+
+-- ra_mod ends
+
 -- [[ Basic Keymaps ]]
 --  See `:help vim.keymap.set()`
 
@@ -892,6 +907,7 @@ require("lazy").setup({
 					{ name = "nvim_lsp" },
 					{ name = "luasnip" },
 					{ name = "path" },
+					{ name = "codecompanion" },
 				},
 			})
 		end,

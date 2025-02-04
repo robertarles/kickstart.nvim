@@ -1,0 +1,32 @@
+local hostname = vim.loop.os_gethostname()
+
+-- Prevent loading the plugin on specific hosts
+if string.find(hostname, "terminus") then
+	return {
+		"huggingface/llm.nvim",
+		opts = {
+			backend = "ollama", -- Specify Ollama as the backend
+			model = "deepseek-coder:6.7b", -- Use the Starcoder2 model
+			url = "http://127.0.0.1:11434/api/generate",
+			request_body = {
+				options = {
+					temperature = 0.2, -- Adjust temperature for creativity
+					top_p = 0.95, -- Top-p sampling for diversity
+				},
+			},
+			enable_suggestions_on_startup = true, -- Enable suggestions automatically
+			lsp = {
+				bin_path = vim.api.nvim_call_function("stdpath", { "data" }) .. "/mason/bin/llm-ls", -- Path to LLM language server binary
+			},
+			-- tokenizer = {
+			-- 	repository = "bigcode/starcoder", -- Tokenizer repository for Starcoder
+			-- },
+			-- use tab as accept keymap
+			accept_keymap = "<tab>",
+			-- accept_keymap = "<S-CR>", -- Keymap to accept completions
+			dismiss_keymap = "<CR>", -- Keymap to dismiss completions
+		},
+	}
+else
+	return {}
+end

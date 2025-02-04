@@ -1,0 +1,9 @@
+local hostname = vim.loop.os_gethostname()
+-- moriarty CPU spins out of control with tabnine running
+
+if string.find(hostname, "terminus") then
+	return { -- Custom configuration (defaults shown)
+	}
+else
+	return {}
+end
