@@ -402,13 +402,13 @@ require("lazy").setup({
 			-- Document existing key chains
 			require("which-key").add({
 				{ "<leader>b", group = "[b]uffer" },
-				{ "<leader>d", group = "[D]ocument" },
-				{ "<leader>g", group = "[G]it", mode = { "n", "v" } },
+				{ "<leader>d", group = "[d]ocument" },
+				{ "<leader>g", group = "[g]it", mode = { "n", "v" } },
 				{ "<leader>l", group = "[l]sp" },
 				{ "<leader>r", group = "[R]ename" },
-				{ "<leader>s", group = "[S]earch" },
-				{ "<leader>w", group = "[W]orkspace" },
-				{ "<leader>t", group = "[T]oggle" },
+				{ "<leader>s", group = "[s]earch" },
+				{ "<leader>w", group = "[w]orkspace" },
+				{ "<leader>t", group = "[t]oggle" },
 			})
 		end,
 	},
@@ -505,7 +505,7 @@ require("lazy").setup({
 				-- You can pass additional configuration to Telescope to change the theme, layout, etc.
 				builtin.current_buffer_fuzzy_find(require("telescope.themes").get_dropdown({
 					winblend = 10,
-					previewer = false,
+					previewer = true,
 				}))
 			end, { desc = "[/] Fuzzily search in current buffer" })
 
