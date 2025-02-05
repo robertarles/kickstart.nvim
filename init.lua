@@ -196,15 +196,12 @@ vim.api.nvim_set_hl(0, "FloatBorder", { bg = "#1e222a", fg = "#c678dd" })
 vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>")
 
 -- Diagnostic keymaps
-vim.keymap.set("n", "<leader>q", vim.diagnostic.setloclist, { desc = "Open diagnostic [Q]uickfix list" }) -- TODO: <leader>c old
 vim.keymap.set("n", "<leader>lq", vim.diagnostic.setloclist, { desc = "[l]sp Open diagnostic [q]uickfix list" }) -- TODO: <leader>c new
 
 vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, { desc = "Go to previous [D]iagnostic message" })
 vim.keymap.set("n", "]d", vim.diagnostic.goto_next, { desc = "Go to next [D]iagnostic message" })
 vim.keymap.set("n", "<leader>ld[", vim.diagnostic.goto_prev, { desc = "Previous [D]iagnostic message (also <[d>)" })
 vim.keymap.set("n", "<leader>ld]", vim.diagnostic.goto_next, { desc = "Next [D]iagnostic message (also <]d>)" })
-vim.keymap.set("n", "<leader>e", vim.diagnostic.open_float, { desc = "Show diagnostic [E]rror messages" }) -- TODO: <leader>c old
-vim.keymap.set("n", "<leader>q", vim.diagnostic.setloclist, { desc = "Open diagnostic [Q]uickfix list" }) -- TODO: <leader>c old
 vim.keymap.set("n", "<leader>le", vim.diagnostic.open_float, { desc = "[l]sp Show diagnostic [e]rror messages" }) -- TODO: <leader>c new
 vim.keymap.set("n", "<leader>lq", vim.diagnostic.setloclist, { desc = "[l]sp Open diagnostic [q]uickfix list" }) -- TODO: <leader>c new
 vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>")
