@@ -1,36 +1,43 @@
 return {
-	"David-Kunz/gen.nvim",
+	"huggingface/llm.nvim",
 	opts = {
-		model = "llama3.2:latest", -- The default model to use.
-		quit_map = "q", -- set keymap to close the response window
-		retry_map = "<c-r>", -- set keymap to re-send the current prompt
-		accept_map = "<c-cr>", -- set keymap to replace the previous selection with the last result
-		host = "terminus.mooneye-blues.ts.net", -- The host running the Ollama service.
-		port = "11434", -- The port on which the Ollama service is listening.
-		display_mode = "float", -- The display mode. Can be "float" or "split" or "horizontal-split".
-		show_prompt = false, -- Shows the prompt submitted to Ollama. Can be true (3 lines) or "full".
-		show_model = false, -- Displays which model you are using at the beginning of your chat session.
-		no_auto_close = false, -- Never closes the window automatically.
-		file = false, -- Write the payload to a temporary file to keep the command short.
-		hidden = false, -- Hide the generation window (if true, will implicitly set `prompt.replace = true`), requires Neovim >= 0.10
-		init = function(options)
-			pcall(io.popen, "ollama serve > /dev/null 2>&1 &")
-		end,
-		-- Function to initialize Ollama
-		command = function(options)
-			local body = { model = options.model, stream = true }
-			return "curl --silent --no-buffer -X POST http://"
-				.. options.host
-				.. ":"
-				.. options.port
-				.. "/api/chat -d $body"
-		end,
-		-- The command for the Ollama service. You can use placeholders $prompt, $model and $body (shellescaped).
-		-- This can also be a command string.
-		-- The executed command must return a JSON object with { response, context }
-		-- (context property is optional).
-		-- list_models = '<omitted lua function>', -- Retrieves a list of model names
-		result_filetype = "markdown", -- Configure filetype of the result buffer
-		debug = false, -- Prints errors and the command which is run.
+		api_token = nil, -- cf Install paragraph
+		backend = "ollama", -- backend ID, "huggingface" | "ollama" | "openai" | "tgi"
+		url = "http://terminus.mooneye-blues.ts.net:11434", -- llm-ls uses "/api/generate"
+		tokens_to_clear = { "<|endoftext|>" }, -- tokens to remove from the model's output
+		-- parameters that are added to the request body, values are arbitrary, you can set any field:value pair here it will be passed as is to the backend
+		request_body = {
+			parameters = {
+				max_new_tokens = 60,
+				temperature = 0.2,
+				top_p = 0.95,
+			},
+		},
+		-- set this if the model supports fill in the middle
+		fim = {
+			enabled = true,
+			prefix = "<fim_prefix>",
+			middle = "<fim_middle>",
+			suffix = "<fim_suffix>",
+		},
+		debounce_ms = 150,
+		accept_keymap = "<Tab>",
+		dismiss_keymap = "<S-Tab>",
+		tls_skip_verify_insecure = false,
+		-- llm-ls configuration, cf llm-ls section
+		lsp = {
+			bin_path = nil,
+			host = nil,
+			port = nil,
+			cmd_env = nil, -- or { LLM_LOG_LEVEL = "DEBUG" } to set the log level of llm-ls
+			version = "0.5.3",
+		},
+		tokenizer = nil, -- cf Tokenizer paragraph
+		context_window = 1024, -- max number of tokens for the context window
+		enable_suggestions_on_startup = true,
+		enable_suggestions_on_files = "*", -- pattern matching syntax to enable suggestions on specific files, either a string or a list of strings
+		disable_url_path_completion = false, -- cf Backend
+		-- cf Setup
+		model = "llama3.2:latest",
 	},
 }
