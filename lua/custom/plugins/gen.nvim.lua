@@ -1,6 +1,5 @@
 local hostname = vim.loop.os_gethostname()
--- moriarty CPU spins out of control with tabnine running
-if string.find(hostname, "C02FP34DMD6T") then
+if not string.find(hostname, "C02FP34DMD6T") then
 	return {
 		"David-Kunz/gen.nvim",
 		opts = {

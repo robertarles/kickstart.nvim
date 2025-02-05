@@ -6,14 +6,15 @@ if not string.find(hostname, "C02FP34DMD6T") then
 		opts = {
 			api_token = nil, -- cf Install paragraph
 			backend = "ollama", -- backend ID, "huggingface" | "ollama" | "openai" | "tgi"
+			model = "qwen2.5-coder:1.5b",
 			url = "http://terminus.mooneye-blues.ts.net:11434", -- llm-ls uses "/api/generate"
 			tokens_to_clear = { "<|endoftext|>" }, -- tokens to remove from the model's output
 			-- parameters that are added to the request body, values are arbitrary, you can set any field:value pair here it will be passed as is to the backend
 			request_body = {
 				parameters = {
-					max_new_tokens = 60,
-					temperature = 0.2,
-					top_p = 0.95,
+					max_new_tokens = 80,
+					temperature = 0.15,
+					top_p = 0.90,
 				},
 			},
 			-- set this if the model supports fill in the middle
@@ -39,9 +40,7 @@ if not string.find(hostname, "C02FP34DMD6T") then
 			context_window = 1024, -- max number of tokens for the context window
 			enable_suggestions_on_startup = true,
 			enable_suggestions_on_files = "*", -- pattern matching syntax to enable suggestions on specific files, either a string or a list of strings
-			disable_url_path_completion = false, -- cf Backend
-			-- cf Setup
-			model = "llama3.2:latest",
+			disable_url_path_completion = false,
 		},
 	}
 else
