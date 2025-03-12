@@ -1,6 +1,6 @@
 local hostname = vim.loop.os_gethostname()
 -- moriarty CPU spins out of control with tabnine running
-if string.find(hostname, "moriartyNOT") then
+if string.find(hostname, "moriarty_DISABLED") then
 	return {
 		{
 			"codota/tabnine-nvim",

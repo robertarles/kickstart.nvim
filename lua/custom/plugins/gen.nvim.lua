@@ -1,5 +1,5 @@
 local hostname = vim.loop.os_gethostname()
-if not string.find(hostname, "C02FP34DMD6T") then
+if string.find(hostname, "terminus") then
 	return {
 		"David-Kunz/gen.nvim",
 		opts = {

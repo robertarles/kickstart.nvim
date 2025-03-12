@@ -1,7 +1,7 @@
 local hostname = vim.loop.os_gethostname()
 -- moriarty CPU spins out of control with tabnine running
 
-if string.find(hostname, "terminus") then
+if string.find(hostname, "DISABLE") then
 	return {
 		{
 			"olimorris/codecompanion.nvim",
