@@ -6,7 +6,7 @@ if not string.find(hostname, "C02FP34DMD6T") then
 		opts = {
 			api_token = nil, -- cf Install paragraph
 			backend = "ollama", -- backend ID, "huggingface" | "ollama" | "openai" | "tgi"
-			model = "qwen2.5-coder:latest",
+			model = "dolphin3:latest",
 			url = "http://terminus.mooneye-blues.ts.net:11434", -- llm-ls uses "/api/generate"
 			tokens_to_clear = { "<|endoftext|>" }, -- tokens to remove from the model's output
 			-- parameters that are added to the request body, values are arbitrary, you can set any field:value pair here it will be passed as is to the backend
