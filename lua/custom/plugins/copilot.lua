@@ -1,5 +1,5 @@
 local hostname = vim.loop.os_gethostname()
-if string.find(hostname, "C02FP34DMD6T_DISABLED") then
+if string.find(hostname, "C02FP34DMD6T") then
 	return {
 		{
 			"github/copilot.vim",
