@@ -19,7 +19,7 @@
 ========                                                     ========
 =====================================================================
 =====================================================================
-
+{}
 What is Kickstart?
 
   Kickstart.nvim is *not* a distribution.
@@ -40,7 +40,6 @@ What is Kickstart?
     reference for how Neovim integrates Lua.
     - :help lua-guide
     - (or HTML version): https://neovim.io/doc/user/lua-guide.html
-
 Kickstart Guide:
 
   TODO: The very first thing you should do is to run the command `:Tutor` in Neovim.
@@ -255,8 +254,9 @@ vim.keymap.set(
 --  See `:help wincmd` for a list of all window commands
 vim.keymap.set("n", "<C-h>", "<C-w><C-h>", { desc = "Move focus to the left window" })
 vim.keymap.set("n", "<C-l>", "<C-w><C-l>", { desc = "Move focus to the right window" })
-vim.keymap.set("n", "<C-j>", "<C-w><C-j>", { desc = "Move focus to the lower window" })
-vim.keymap.set("n", "<C-k>", "<C-w><C-k>", { desc = "Move focus to the upper window" })
+--freethesekeysfor accept/rejectsuggestions
+-- vim.keymap.set("n", "<C-j>", "<C-w><C-j>", { desc = "Move focus to the lower window" })
+-- vim.keymap.set("n", "<C-k>", "<C-w><C-k>", { desc = "Move focus to the upper window" })
 
 -- Map Ctrl+a to select all text in the buffer
 vim.api.nvim_set_keymap("n", "<C-a>", "ggVG", { noremap = true, silent = true })

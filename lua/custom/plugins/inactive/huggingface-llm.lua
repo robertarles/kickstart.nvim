@@ -1,13 +1,15 @@
 local hostname = vim.loop.os_gethostname()
 -- moriarty CPU spins out of control with tabnine running
-if not string.find(hostname, "C02FP34DMD6T") then
+if string.find(hostname, "terminus") then
 	return {
 		"huggingface/llm.nvim",
+		event = "VeryLazy",
 		opts = {
 			api_token = nil, -- cf Install paragraph
-			backend = "ollama", -- backend ID, "huggingface" | "ollama" | "openai" | "tgi"
-			model = "dolphin3:latest",
-			url = "http://terminus.mooneye-blues.ts.net:11434", -- llm-ls uses "/api/generate"
+			backend = "openai", --"ollama", -- backend ID, "huggingface" | "ollama" | "openai" | "tgi"
+			model = "ai/mistral", -- "dolphin3:latest",
+			url = "http://localhost:12434",
+			--url = "http://terminus.mooneye-blues.ts.net:12434", --11434", -- llm-ls uses "/api/generate"
 			tokens_to_clear = { "<|endoftext|>" }, -- tokens to remove from the model's output
 			-- parameters that are added to the request body, values are arbitrary, you can set any field:value pair here it will be passed as is to the backend
 			request_body = {
@@ -25,8 +27,8 @@ if not string.find(hostname, "C02FP34DMD6T") then
 				suffix = "<fim_suffix>",
 			},
 			debounce_ms = 150,
-			accept_keymap = "<Tab>",
-			dismiss_keymap = "<S-Tab>",
+			accept_keymap = "<C-j>", --"<Tab>",
+			dismiss_keymap = "<C-k>", --"<S-Tab>",
 			tls_skip_verify_insecure = false,
 			-- llm-ls configuration, cf llm-ls section
 			lsp = {
