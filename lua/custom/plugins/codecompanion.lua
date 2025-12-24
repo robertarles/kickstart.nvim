@@ -1,39 +1,100 @@
-return {
-	"olimorris/codecompanion.nvim",
-	dependencies = {
-		"nvim-lua/plenary.nvim",
-		"nvim-treesitter/nvim-treesitter",
-	},
-	config = function()
-		require("codecompanion").setup({
-			adapters = {
-				acp = {
-					claude_code = function()
-						return require("codecompanion.adapters").extend("claude_code", {
-							env = {
-								CLAUDE_CODE_OAUTH_TOKEN = vim.env.CLAUDE_CODE_OAUTH_TOKEN,
-							},
-						})
-					end,
-				},
-			},
-			strategies = {
-				chat = { adapter = "claude_code" },
-				inline = { adapter = "claude_code" },
-				cmd = { adapter = "claude_code" },
-			},
-			display = {
-				chat = {
-					window = {
-						layout = "vertical",
-					},
-				},
-			},
-		})
-	end,
-	keys = {
-		{ "<leader>ac", "<cmd>CodeCompanionChat Toggle<cr>", desc = "Toggle Chat" },
-		{ "<leader>aa", "<cmd>CodeCompanionActions<cr>", desc = "Actions", mode = { "n", "v" } },
-		{ "<leader>ai", "<cmd>CodeCompanion<cr>", desc = "Inline prompt", mode = { "n", "v" } },
-	},
-}
+return {}
+-- 	"olimorris/codecompanion.nvim",
+-- 	cmd = { "CodeCompanion", "CodeCompanionChat", "CodeCompanionActions" },
+-- 	dependencies = {
+-- 		"nvim-lua/plenary.nvim",
+-- 		"nvim-treesitter/nvim-treesitter",
+-- 		"j-hui/fidget.nvim", -- Display status
+-- 	},
+-- 	config = function()
+-- 		require("codecompanion").setup({
+-- 			adapters = {
+-- 				acp = {
+-- 					claude_code = function()
+-- 						return require("codecompanion.adapters").extend("claude_code", {
+-- 							env = {
+-- 								CLAUDE_CODE_OAUTH_TOKEN = vim.env.CLAUDE_CODE_OAUTH_TOKEN,
+-- 							},
+-- 						})
+-- 					end,
+-- 				},
+-- 			},
+-- 			strategies = {
+-- 				chat = {
+-- 					adapter = "claude_code",
+-- 					roles = {
+-- 						user = "robert",
+-- 					},
+-- 					slash_commands = {
+-- 						["file"] = {
+-- 							-- Location to the slash command in CodeCompanion
+-- 							callback = "strategies.chat.slash_commands.file",
+-- 							description = "Select a file using Telescope",
+-- 							opts = {
+-- 								provider = "telescope", -- Can be "default", "telescope", "fzf_lua", "mini_pick" or "snacks"
+-- 								contains_code = true,
+-- 							},
+-- 						},
+-- 					},
+-- 				},
+-- 				inline = {
+-- 					adapter = "claude_code",
+-- 					keymaps = {
+-- 						accept_change = {
+-- 							modes = { n = "gda" }, -- Remember this as DiffAccept
+-- 						},
+-- 						reject_change = {
+-- 							modes = { n = "gdr" }, -- Remember this as DiffReject
+-- 						},
+-- 						always_accept = {
+-- 							modes = { n = "gdy" }, -- Remember this as DiffYolo
+-- 						},
+-- 					},
+-- 				},
+-- 				cmd = { adapter = "claude_code" },
+-- 			},
+-- 			display = {
+-- 				display = {
+-- 					action_palette = {
+-- 						width = 95,
+-- 						height = 10,
+-- 						prompt = "Prompt ", -- Prompt used for interactive LLM calls
+-- 						provider = "default", -- Can be "default", "telescope", "fzf_lua", "mini_pick" or "snacks". If not specified, the plugin will autodetect installed providers.
+-- 						opts = {
+-- 							show_default_actions = true, -- Show the default actions in the action palette?
+-- 							show_default_prompt_library = true, -- Show the default prompt library in the action palette?
+-- 							title = "CodeCompanion actions", -- The title of the action palette
+-- 						},
+-- 					},
+-- 				},
+-- 				diff = {
+-- 					provider_opts = {
+-- 						split = {
+-- 							close_chat_at = 240, -- Close an open chat buffer if the total columns of your display are less than...
+-- 							layout = "vertical", -- vertical|horizontal split
+-- 							opts = {
+-- 								"internal",
+-- 								"filler",
+-- 								"closeoff",
+-- 								"algorithm:histogram", -- https://adamj.eu/tech/2024/01/18/git-improve-diff-histogram/
+-- 								"indent-heuristic", -- https://blog.k-nut.eu/better-git-diffs
+-- 								"followwrap",
+-- 								"linematch:120",
+-- 							},
+-- 						},
+-- 					},
+-- 				},
+-- 				chat = {
+-- 					window = {
+-- 						layout = "vertical",
+-- 					},
+-- 				},
+-- 			},
+-- 		})
+-- 	end,
+-- 	keys = {
+-- 		{ "<leader>ac", "<cmd>CodeCompanionChat Toggle<cr>", desc = "Toggle Chat" },
+-- 		{ "<leader>aa", "<cmd>CodeCompanionActions<cr>", desc = "Actions", mode = { "n", "v" } },
+-- 		{ "<leader>ai", "<cmd>CodeCompanion<cr>", desc = "Inline prompt", mode = { "n", "v" } },
+-- 	},
+-- }
