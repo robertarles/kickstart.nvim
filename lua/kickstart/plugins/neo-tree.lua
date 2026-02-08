@@ -14,15 +14,25 @@ return {
 	keys = {
 		{ "\\", ":Neotree reveal<CR>", desc = "NeoTree reveal" },
 	},
+	init = function()
+		-- Close Neovim when neo-tree is the last window
+		vim.api.nvim_create_autocmd("BufEnter", {
+			group = vim.api.nvim_create_augroup("NeoTreeAutoClose", { clear = true }),
+			callback = function()
+				local wins = vim.api.nvim_list_wins()
+				if #wins == 1 and vim.bo.filetype == "neo-tree" then
+					vim.cmd("quit")
+				end
+			end,
+		})
+	end,
 	opts = {
-		-- close nvim when NeoTree is the last window
-		use_libuv_file_watcher = true,
-		auto_close = true,
 		window = {
 			position = "left",
 			width = 30,
 		},
 		filesystem = {
+			use_libuv_file_watcher = true,
 			follow_current_file = { enabled = true },
 			window = {
 				position = "left",

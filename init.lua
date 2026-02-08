@@ -264,9 +264,9 @@ vim.api.nvim_set_keymap("n", "<C-a>", "ggVG", { noremap = true, silent = true })
 vim.api.nvim_set_keymap("n", "<D-a>", "ggVG", { noremap = true, silent = true })
 
 -- Map Ctrl+b to run the external command ~/bin/notesmanautomation and refresh the buffer
-vim.api.nvim_set_keymap("n", "<leader>1", ":lua TaskmasterraRecordKeep()<CR>", { noremap = true, silent = true })
-vim.api.nvim_set_keymap("n", "<leader>2", ":lua TaskmasterraUpdateCal()<CR>", { noremap = true, silent = true })
-vim.api.nvim_set_keymap("n", "<leader>3", ":lua TaskmasterraFull()<CR>", { noremap = true, silent = true })
+--vim.api.nvim_set_keymap("n", "<leader>1", ":lua TaskmasterraRecordKeep()<CR>", { noremap = true, silent = true })
+--vim.api.nvim_set_keymap("n", "<leader>2", ":lua TaskmasterraUpdateCal()<CR>", { noremap = true, silent = true })
+--vim.api.nvim_set_keymap("n", "<leader>3", ":lua TaskmasterraFull()<CR>", { noremap = true, silent = true })
 
 function TaskmasterraFull()
 	TaskmasterraRecordKeep()
